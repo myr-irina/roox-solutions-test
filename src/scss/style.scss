@@ -1,0 +1,17 @@
+@import 'config';
+@import 'fonts';
+@import 'libs/normalize';
+
+@import 'components/all';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    // background-color: $light-color;
+    font-family: $font-stack;
+    line-height: 1.6;
+}
