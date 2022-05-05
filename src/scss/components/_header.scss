@@ -1,7 +1,14 @@
 .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-    &-title {
+    &__title {
         font-size: $font-size-lg;
         font-weight: bold;
+    }
+
+    &__button {
+        @include buttonStyle($blue-color, 117px)
     }
 }

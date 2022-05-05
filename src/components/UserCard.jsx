@@ -3,7 +3,7 @@ import React from "react";
 function UserCard() {
 	return (
 		<form className='user-card'>
-			<ul className='user-card__wrapper'>
+			<ul className='user-card__list'>
 				<li>
 					<label for='name'>ФИО:</label>
 					<input
@@ -33,7 +33,7 @@ function UserCard() {
 				</li>
 			</ul>
 			<p>
-				<button>Подробнее</button>
+				<button type='button'>Подробнее</button>
 			</p>
 		</form>
 	);
