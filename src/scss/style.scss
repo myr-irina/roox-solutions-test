@@ -8,6 +8,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
 }
 
 body {
@@ -19,11 +20,10 @@ body {
 .wrapper {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    margin: 0 auto;
+    align-items: flex-start;  
 
     height: 100%;
-    max-width: 1280px;
+    max-width: 1200px;
     min-width: 320px;
 
     @media (max-width: 768px) {
@@ -32,6 +32,6 @@ body {
 }
 
 .container {
-    margin: 19px auto 34px 17px;
+    margin: 19px auto 17px 34px;
     width: 100%;
 }

@@ -5,6 +5,7 @@ $font-size-lg: 14px;
 $light-grey-color: #F3F3F3;
 $dark-grey-color: #BDBDBD;
 $dark-grey-color-btn: #AFAFAF;
+$dark-grey-color-label: #A3A3A3;
 $blue-color: #4B51EF;
 $green-color: #52CF4F;
 
@@ -17,7 +18,7 @@ $green-color: #52CF4F;
     color: #FFFFFF;
     margin-bottom: 10px;
     cursor: pointer;
-  
+
     background-color: $background-color;
     width: $width;
 }

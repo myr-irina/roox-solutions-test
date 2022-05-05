@@ -1,12 +1,27 @@
 .user-list {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 24px;
     margin: 17px 0 0;
     width: 100%;
-    // max-width: 420px;
-    
+ 
+
+    p {
+        align-self: flex-end;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        max-width: 420px;          
+    }
+
     &__item {
-     list-style: none;
+        list-style: none;
+    }
+
+    &__text {
+        margin: 10px 0;
+        align-self:flex-end;
     }
 }
