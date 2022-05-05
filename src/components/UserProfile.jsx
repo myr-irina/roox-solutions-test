@@ -8,8 +8,8 @@ function UserProfile() {
 			<SortPanel />
 			<div className='container'>
 				<ProfileHeader />
-				<section className='user-profile'>
-					<form>
+				<section className="user-profile" >
+					<form className='user-profile__form' autoComplete="off">
 						<ul className='user-profile__list'>
 							<li className="user-profile__item">
 								<label for='name'>Name</label>
@@ -17,7 +17,7 @@ function UserProfile() {
 									type='text'
 									id='name'
 									name='user-profile__name'
-									placeholder='Иван Иванов'
+									placeholder='Иван Иванов'									
 								/>
 							</li>
 
@@ -91,11 +91,12 @@ function UserProfile() {
 							</li>
 
 							<li className="user-profile__item">
-								<label for='msg'>Comment:</label>
+								<label for='msg'>Comment</label>
 								<textarea id='msg' name='user_message' />
 							</li>
 						</ul>
 					</form>
+					<button type='submit'>Отправить</button>
 				</section>
 			</div>
 		</>

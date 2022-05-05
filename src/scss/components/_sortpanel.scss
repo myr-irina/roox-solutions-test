@@ -17,4 +17,12 @@
     &__button-sort-company {
         @include buttonStyle($blue-color, 105px)
     }
+
+    ul {
+        list-style: none;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
 }
