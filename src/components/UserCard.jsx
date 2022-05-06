@@ -11,7 +11,7 @@ function UserCard() {
 						type='text'
 						id='name'
 						name='user-card__name'
-						value='Иван Иванов'
+						defaultValue='Иван Иванов'
 					/>
 				</li>
 				<li>
@@ -20,7 +20,7 @@ function UserCard() {
 						type='text'
 						id='city'
 						name='user-card__city'
-						value='Москва'
+						defaultValue='Москва'
 					></input>
 				</li>
 				<li>
@@ -29,7 +29,7 @@ function UserCard() {
 						type='text'
 						id='company'
 						name='user-card__company'
-						value='Пример'
+						defaultValue='Пример'
 					></input>
 				</li>
 			</ul>

@@ -8,10 +8,13 @@ import { Routes, Route } from "react-router-dom";
 function App() {
 	return (
 		<div className='wrapper'>
-			<Routes>
-				<Route path='/' element={<UserInfoList />} />
-				<Route path='profile' element={<UserProfile />} />
-			</Routes>
+			<SortPanel />
+			<div className='container'>
+				<Outlet />
+			</div>
+
+			{/* <Route path='/' element={<UserInfoList />} />
+				<Route path='profile' element={<UserProfile />} /> */}
 		</div>
 	);
 }
