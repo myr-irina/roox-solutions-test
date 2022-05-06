@@ -1,38 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function UserCard({user}) {
+function UserCard({ user }) {
 	// console.log(user)
 	return (
-		<form className='user-card'>
+		<section className='user-card'>
 			<ul className='user-card__list'>
-			
 				<li>
-					<label for='name'>ФИО:</label>
-					<input
-						type='text'
-						id='name'
-						name='user-card__name'
-						value={user.name}
-					/>
+					<span for='name'>ФИО:</span>
+					<p>{user.name}</p>
 				</li>
 				<li>
-					<label for='city'>город:</label>
-					<input
-						type='text'
-						id='city'
-						name='user-card__city'
-						value={user.address.city}
-					></input>
+					<span for='city'>город:</span>
+					<p>{user.address.city}</p>
 				</li>
 				<li>
-					<label for='company'>компания:</label>
-					<input
-						type='text'
-						id='company'
-						name='user-card__company'
-						value={user.company.name}
-					></input>
+					<span for='company'>компания:</span>
+					<p>{user.company.name}</p>
 				</li>
 			</ul>
 			<p>
@@ -42,7 +26,7 @@ function UserCard({user}) {
 					</Link>
 				</button>
 			</p>
-		</form>
+		</section>
 	);
 }
 

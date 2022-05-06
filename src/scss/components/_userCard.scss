@@ -8,19 +8,11 @@
     align-items: flex-end;
     justify-content: space-between;
     border-radius: 8px;
- 
 
     button {
         border: none;
-        align-self: flex-end;      
+        align-self: flex-end;
         cursor: pointer;
-    }
-
-    &__link {
-        text-decoration: none;
-        color: $blue-color;
-        font-family: $font-size-md;
-        line-height: 14px; 
     }
 
     &__list {
@@ -30,25 +22,32 @@
     }
 
     li {
+        display: flex;
+        flex-direction: row;
         margin-bottom: 7px;
-        color: $dark-grey-color-label;
+       
     }
 
     li:last-child {
         margin-bottom: 0px;
     }
 
-    label {
+    span {
         margin-right: 7px;
+        font-size: $font-size-sm;
+        line-height: 13px;
+        color: $dark-grey-color-label;
+    }
+
+    p {
         font-size: $font-size-sm;
         line-height: 13px;
     }
 
-    input {
-        outline: none;
-        border: transparent;
-        background-color: $light-grey-color;
-        font-size: $font-size-sm;
-        line-height: 13px;
+    &__link {
+        text-decoration: none;
+        color: $blue-color;
+        font-family: $font-size-md;
+        line-height: 14px;
     }
 }
