@@ -77,6 +77,8 @@ function UserProfile() {
 									id='phone'
 									name='user-profile__phone'
 									placeholder='89991112233'
+									size="11"
+									minlength="11" maxlength="11"
 								/>
 							</li>
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function UserCard() {
 	return (
@@ -33,7 +34,11 @@ function UserCard() {
 				</li>
 			</ul>
 			<p>
-				<button type='button'>Подробнее</button>
+				<button type='button'>
+					<Link className='user-card__link' to='profile'>
+						Подробнее
+					</Link>
+				</button>
 			</p>
 		</form>
 	);
