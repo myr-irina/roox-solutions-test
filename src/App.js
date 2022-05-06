@@ -27,12 +27,40 @@ function App() {
 					setUsers([]);
 				}
 			});
-	});
+	}, []);
+
+	function handleSortByCity() {
+		const sortedData = [...users].sort(function (a, b) {
+			console.log(a)
+			let nameA = a.address.city.toLowerCase();
+			let nameB = b.address.city.toLowerCase();
+			if (nameA < nameB) return -1;
+			if (nameA > nameB) return 1;
+			return 0;
+		});
+
+		setUsers(sortedData);
+	}
+
+	function handleSortByCompany() {
+		const sortedData = [...users].sort(function (a, b) {
+			let nameA = a.company.name.toLowerCase();
+			let nameB = b.company.name.toLowerCase();
+			if (nameA < nameB) return -1;
+			if (nameA > nameB) return 1;
+			return 0;
+		});
+
+		setUsers(sortedData);
+	}
 
 	return (
 		<div>
 			<Routes>
-				<Route path='/' element={<Main users={users} />}>
+				<Route
+					path='/'
+					element={<Main users={users} handleSortByCompany={handleSortByCompany} handleSortByCity={handleSortByCity} />}
+				>
 					<Route index element={<UserInfoList users={users} />} />
 					<Route path='/profile' element={<UserProfile />} />
 				</Route>

@@ -1,17 +1,25 @@
 import React from "react";
 
-function SortPanel() {
+function SortPanel({ handleSortByCity, handleSortByCompany }) {
 	return (
 		<article className='sortpanel'>
 			<p className='sortpanel__header'>Сортировка</p>
 			<ul>
 				<li>
-					<button type='button' className='sortpanel__button-sort-city'>
+					<button
+						type='button'
+						className='sortpanel__button-sort-city'
+						onClick={handleSortByCity}
+					>
 						по городу
 					</button>
 				</li>
 				<li>
-					<button type='button' className='sortpanel__button-sort-company'>
+					<button
+						type='button'
+						className='sortpanel__button-sort-company'
+						onClick={handleSortByCompany}
+					>
 						по компании
 					</button>
 				</li>

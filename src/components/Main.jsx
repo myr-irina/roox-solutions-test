@@ -4,11 +4,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 
-function Main({user, users}) {
+function Main({ user, users, handleSortByCity, handleSortByCompany}) {
+
 
 	return (
 		<div className='wrapper'>
-			<SortPanel />
+			<SortPanel handleSortByCity={handleSortByCity} handleSortByCompany={handleSortByCompany}/>
 			<div className='container'>
 				<Outlet users={users} />
 			</div>

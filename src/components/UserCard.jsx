@@ -7,15 +7,15 @@ function UserCard({ user }) {
 		<section className='user-card'>
 			<ul className='user-card__list'>
 				<li>
-					<span for='name'>ФИО:</span>
+					<span>ФИО:</span>
 					<p>{user.name}</p>
 				</li>
 				<li>
-					<span for='city'>город:</span>
+					<span>город:</span>
 					<p>{user.address.city}</p>
 				</li>
 				<li>
-					<span for='company'>компания:</span>
+					<span>компания:</span>
 					<p>{user.company.name}</p>
 				</li>
 			</ul>
