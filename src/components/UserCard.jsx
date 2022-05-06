@@ -1,17 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function UserCard() {
+function UserCard({user}) {
+	// console.log(user)
 	return (
 		<form className='user-card'>
 			<ul className='user-card__list'>
+			
 				<li>
 					<label for='name'>ФИО:</label>
 					<input
 						type='text'
 						id='name'
 						name='user-card__name'
-						defaultValue='Иван Иванов'
+						value={user.name}
 					/>
 				</li>
 				<li>
@@ -20,7 +22,7 @@ function UserCard() {
 						type='text'
 						id='city'
 						name='user-card__city'
-						defaultValue='Москва'
+						value={user.address.city}
 					></input>
 				</li>
 				<li>
@@ -29,7 +31,7 @@ function UserCard() {
 						type='text'
 						id='company'
 						name='user-card__company'
-						defaultValue='Пример'
+						value={user.company.name}
 					></input>
 				</li>
 			</ul>

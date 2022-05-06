@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./scss/style.scss";
@@ -10,12 +10,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<Routes>
+		<App/>
+			{/* <Routes>
 				<Route path='/' element={<App />}>
 					<Route index element={<UserInfoList />} />
 					<Route path='/profile' element={<UserProfile />} />
 				</Route>
-			</Routes>
+			</Routes> */}
 		</BrowserRouter>
 	</React.StrictMode>
 );
