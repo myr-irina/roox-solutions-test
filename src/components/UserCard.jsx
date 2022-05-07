@@ -21,7 +21,7 @@ function UserCard({ user }) {
 			</ul>
 			<p>
 				<button type='button'>
-					<Link className='user-card__link' to='profile'>
+					<Link className='user-card__link' to={`/${user.id}`}>
 						Подробнее
 					</Link>
 				</button>

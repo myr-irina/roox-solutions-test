@@ -1,7 +1,4 @@
-import Header from "./components/Header";
-import SortPanel from "./components/SortPanel";
 import UserInfoList from "./components/UserInfoList";
-import { Outlet } from "react-router-dom";
 import UserProfile from "./components/UserProfile";
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -31,7 +28,6 @@ function App() {
 
 	function handleSortByCity() {
 		const sortedData = [...users].sort(function (a, b) {
-			console.log(a)
 			let nameA = a.address.city.toLowerCase();
 			let nameB = b.address.city.toLowerCase();
 			if (nameA < nameB) return -1;
@@ -59,17 +55,27 @@ function App() {
 			<Routes>
 				<Route
 					path='/'
-					element={<Main users={users} handleSortByCompany={handleSortByCompany} handleSortByCity={handleSortByCity} />}
+					element={
+						<Main
+							users={users}
+							handleSortByCompany={handleSortByCompany}
+							handleSortByCity={handleSortByCity}
+						/>
+					}
 				>
 					<Route index element={<UserInfoList users={users} />} />
-					<Route path='/profile' element={<UserProfile />} />
+					<Route path='/:id' element={<UserProfile />} />
 				</Route>
-			</Routes>
 
-			{/* <SortPanel />
-			<div className='container'>
-				<Outlet users={users} />
-			</div> */}
+				<Route
+					path='*'
+					element={
+						<main style={{ padding: "1rem" }}>
+							<p>Page's not found</p>
+						</main>
+					}
+				/>
+			</Routes>
 		</div>
 	);
 }

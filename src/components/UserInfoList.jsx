@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import UserCard from "./UserCard";
-import SortPanel from "./SortPanel";
+
 
 function UserInfoList({ users }) {
 	return (

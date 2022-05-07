@@ -1,6 +1,6 @@
 import React from "react";
 import ProfileHeader from "./ProfileHeader";
-import SortPanel from "./SortPanel";
+
 
 function UserProfile() {
 	return (
