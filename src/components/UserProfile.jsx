@@ -1,8 +1,13 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import ProfileHeader from "./ProfileHeader";
 
+function UserProfile({ users }) {
+	console.log(users);
+	const { id } = useParams();
+	console.log(id)
+	const user = users.find(item => item.id === +id);
 
-function UserProfile() {
 	return (
 		<>
 			<ProfileHeader />
@@ -15,13 +20,18 @@ function UserProfile() {
 								type='text'
 								id='name'
 								name='user-profile__name'
-								placeholder='Иван Иванов'
+								defaultValue={user.name}
 							/>
 						</li>
 
 						<li className='user-profile__item'>
 							<label for='user-name'>User name</label>
-							<input type='text' id='user-name' name='user-profile__username' />
+							<input
+								type='text'
+								id='user-name'
+								name='user-profile__username'
+								defaultValue={user.username}
+							/>
 						</li>
 
 						<li className='user-profile__item'>
@@ -30,7 +40,7 @@ function UserProfile() {
 								type='email'
 								id='email'
 								name='user-profile__email'
-								placeholder='example@mail.com'
+								defaultValue={user.email}
 							/>
 						</li>
 
@@ -40,7 +50,7 @@ function UserProfile() {
 								type='text'
 								id='street'
 								name='user-profile__street'
-								placeholder='ул. Пример'
+								defaultValue={user.address.street}
 							/>
 						</li>
 
@@ -50,7 +60,7 @@ function UserProfile() {
 								type='text'
 								id='city'
 								name='user-profile__city'
-								placeholder='Москва'
+								defaultValue={user.address.city}
 							/>
 						</li>
 
@@ -60,7 +70,7 @@ function UserProfile() {
 								type='number'
 								id='zip-code'
 								name='user-profile__zip-code'
-								placeholder='1234234'
+								defaultValue={user.address.zipcode}
 							/>
 						</li>
 
@@ -74,6 +84,7 @@ function UserProfile() {
 								size='11'
 								minLength='11'
 								maxLength='11'
+								defaultValue={user.phone}
 							/>
 						</li>
 
@@ -84,6 +95,7 @@ function UserProfile() {
 								id='url'
 								name='user-profile__url'
 								placeholder='www.example.com'
+								defaultValue={user.website}
 							/>
 						</li>
 

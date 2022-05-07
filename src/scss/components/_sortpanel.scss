@@ -1,8 +1,12 @@
 .sortpanel {
     width: 152px;
-    height: 200vh;
+    height: 100%;
     background-color: $dark-grey-color;
     padding: 35px 20px;
+
+    position: fixed;
+  
+ 
 
     &__header {
         font-size: $font-size-md;

@@ -10,6 +10,7 @@ function App() {
 	const [users, setUsers] = useState([]);
 	const [error, setError] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const [user, setUser] = useState(null);
 
 	useEffect(() => {
 		axios
@@ -26,25 +27,25 @@ function App() {
 			});
 	}, []);
 
+	// function handleSort() {
+	// 	const sortedData = [...users].sort((a,b) => {
+	// 		return a.item.localeCompare(b.item)
+	// 	})
+
+	// 	setUsers(sortedData);
+	// }
+
 	function handleSortByCity() {
-		const sortedData = [...users].sort(function (a, b) {
-			let nameA = a.address.city.toLowerCase();
-			let nameB = b.address.city.toLowerCase();
-			if (nameA < nameB) return -1;
-			if (nameA > nameB) return 1;
-			return 0;
+		const sortedData = [...users].sort((a, b) => {
+			return a.address.city.localeCompare(b.address.city);
 		});
 
 		setUsers(sortedData);
 	}
 
 	function handleSortByCompany() {
-		const sortedData = [...users].sort(function (a, b) {
-			let nameA = a.company.name.toLowerCase();
-			let nameB = b.company.name.toLowerCase();
-			if (nameA < nameB) return -1;
-			if (nameA > nameB) return 1;
-			return 0;
+		const sortedData = [...users].sort((a, b) => {
+			return a.company.name.localeCompare(b.company.name);
 		});
 
 		setUsers(sortedData);
@@ -64,7 +65,7 @@ function App() {
 					}
 				>
 					<Route index element={<UserInfoList users={users} />} />
-					<Route path='/:id' element={<UserProfile />} />
+					<Route path=':id' element={<UserProfile users={users} />} />
 				</Route>
 
 				<Route

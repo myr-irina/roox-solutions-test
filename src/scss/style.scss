@@ -18,13 +18,16 @@ body {
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;  
+    // display: flex;
+    // flex-direction: row;
+    // align-items: flex-start;  
+
+    position: relative;
 
     height: 100%;
     max-width: 1200px;
     min-width: 320px;
+    margin: 0 auto;
 
     @media (max-width: 768px) {
         width: calc(100% - 40px);
@@ -32,6 +35,6 @@ body {
 }
 
 .container {
-    margin: 19px auto 17px 34px;
+    margin: 0 auto 17px 200px;
     width: 438px;
 }

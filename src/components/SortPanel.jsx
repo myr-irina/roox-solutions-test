@@ -1,6 +1,6 @@
 import React from "react";
 
-function SortPanel({ handleSortByCity, handleSortByCompany }) {
+function SortPanel({ handleSortByCompany, handleSortByCity }) {
 	return (
 		<article className='sortpanel'>
 			<p className='sortpanel__header'>Сортировка</p>
@@ -9,6 +9,7 @@ function SortPanel({ handleSortByCity, handleSortByCompany }) {
 					<button
 						type='button'
 						className='sortpanel__button-sort-city'
+						// onClick={() => handleSort('address.city')}
 						onClick={handleSortByCity}
 					>
 						по городу
@@ -18,6 +19,7 @@ function SortPanel({ handleSortByCity, handleSortByCompany }) {
 					<button
 						type='button'
 						className='sortpanel__button-sort-company'
+						// onClick={() => handleSort('company.name')}
 						onClick={handleSortByCompany}
 					>
 						по компании
