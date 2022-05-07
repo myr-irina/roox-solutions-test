@@ -1,12 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import { useParams } from "react-router-dom";
 import ProfileHeader from "./ProfileHeader";
 
 function UserProfile({ users }) {
-	console.log(users);
+	const [readOnly, setReadOnly] = useState();
+
 	const { id } = useParams();
-	console.log(id)
-	const user = users.find(item => item.id === +id);
+	const user = users.find((item) => item.id === +id);
 
 	return (
 		<>
