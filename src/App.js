@@ -9,13 +9,16 @@ import Main from "./components/Main";
 function App() {
 	const [users, setUsers] = useState([]);
 	const [error, setError] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const [user, setUser] = useState(null);
+	const [sortingMethod, setSortingMethod] = useState(null);
 
 	useEffect(() => {
 		axios
 			.get(BASE_URL)
 			.then((res) => {
+				setIsLoading(false);
+				setError(false);
 				setUsers(res.data);
 			})
 			.catch((err) => {
@@ -24,6 +27,9 @@ function App() {
 					setIsLoading(false);
 					setUsers([]);
 				}
+				console.log("Невозможно получить данные с сервера", err);
+				setIsLoading(false);
+				setUsers([]);
 			});
 	}, []);
 
@@ -61,6 +67,7 @@ function App() {
 							users={users}
 							handleSortByCompany={handleSortByCompany}
 							handleSortByCity={handleSortByCity}
+							isLoading={isLoading}
 						/>
 					}
 				>

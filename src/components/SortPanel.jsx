@@ -1,5 +1,7 @@
 import React from "react";
 
+
+
 function SortPanel({ handleSortByCompany, handleSortByCity }) {
 	return (
 		<article className='sortpanel'>
