@@ -19,8 +19,7 @@ function UserProfile({ users }) {
 		name: "",
 		username: "",
 		email: "",
-		street: "",
-		city: "",
+		address: "",
 		zipcode: "",
 		phone: "",
 		website: "",
@@ -32,9 +31,6 @@ function UserProfile({ users }) {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-
-		//проверить, что все поля формы валидны, кнопка отправки валидна
-		//сформировать JSON и вывести ее в консоль
 		console.log(JSON.stringify(userData));
 		setIsReadOnly(true);
 	}
@@ -119,9 +115,9 @@ function UserProfile({ users }) {
 										return {
 											...oldUserData,
 											address: {
-											   ...oldUserData.address,
-											   street: e.target.value
-											}
+												...oldUserData.address,
+												street: e.target.value,
+											},
 										};
 									});
 								}}
@@ -135,22 +131,19 @@ function UserProfile({ users }) {
 								type='text'
 								id='city'
 								name='user-profile__city'
-								// value={userData.address.city}
-								// value={userData.address.city}
-								// readOnly={isReadOnly}
-								// onChange={(e) => {
-								// 	setUserData((oldUserData) => {
-								// 		return {
-								// 			...oldUserData,
-								// 			city: {
-								// 				...oldUserData.address,
-								// 				city: e.target.value,
-								// 			},
-								// 		};
-								// 	});
-								// }}
-
-
+								value={userData.address.city}
+								readOnly={isReadOnly}
+								onChange={(e) => {
+									setUserData((oldUserData) => {
+										return {
+											...oldUserData,
+											address: {
+												...oldUserData.address,
+												city: e.target.value,
+											},
+										};
+									});
+								}}
 							/>
 						</li>
 
@@ -161,7 +154,19 @@ function UserProfile({ users }) {
 								type='number'
 								id='zip-code'
 								name='user-profile__zip-code'
-								// value={userData.address.zipcode}
+								value={userData.address.zipcode}
+								readOnly={isReadOnly}
+								onChange={(e) => {
+									setUserData((oldUserData) => {
+										return {
+											...oldUserData,
+											address: {
+												...oldUserData.address,
+												zipcode: e.target.value,
+											},
+										};
+									});
+								}}
 							/>
 						</li>
 
@@ -176,7 +181,16 @@ function UserProfile({ users }) {
 								size='11'
 								minLength='11'
 								maxLength='11'
-								// value={userData.phone}
+								value={userData.phone}
+								readOnly={isReadOnly}
+								onChange={(e) => {
+									setUserData((oldUserData) => {
+										return {
+											...oldUserData,
+											phone: e.target.value,
+										};
+									});
+								}}
 							/>
 						</li>
 
@@ -189,6 +203,15 @@ function UserProfile({ users }) {
 								name='user-profile__url'
 								placeholder='www.example.com'
 								value={userData.website}
+								readOnly={isReadOnly}
+								onChange={(e) => {
+									setUserData((oldUserData) => {
+										return {
+											...oldUserData,
+											website: e.target.value,
+										};
+									});
+								}}
 							/>
 						</li>
 

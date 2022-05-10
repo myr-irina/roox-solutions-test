@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function UserCard({ user }) {
-	// console.log(user)
+
 	return (
 		<section className='user-card'>
 			<ul className='user-card__list'>

@@ -51,22 +51,7 @@ function App() {
 		sortArray(sortingMethod);
 	}, [sortingMethod]);
 
-	// function handleSortByCity() {
-	// 	const sortedData = [...users].sort((a, b) => {
-	// 		return a.address.city.localeCompare(b.address.city);
-	// 	});
-
-	// 	setUsers(sortedData);
-	// }
-
-	// function handleSortByCompany() {
-	// 	const sortedData = [...users].sort((a, b) => {
-	// 		return a.company.name.localeCompare(b.company.name);
-	// 	});
-
-	// 	setUsers(sortedData);
-	// }
-
+	
 	return (
 		<div>
 			<Routes>
@@ -75,16 +60,16 @@ function App() {
 					element={
 						<Main
 							users={users}
-							// handleSortByCompany={handleSortByCompany}
-							// handleSortByCity={handleSortByCity}
 							setUsers={setUsers}
 							isLoading={isLoading}
 							setSortingMethod={setSortingMethod}
-							sortingMethod={sortingMethod}
 						/>
 					}
 				>
-					<Route index element={<UserInfoList users={users} isLoading={isLoading} />} />
+					<Route
+						index
+						element={<UserInfoList users={users} isLoading={isLoading} />}
+					/>
 					<Route path=':id' element={<UserProfile users={users} />} />
 				</Route>
 
