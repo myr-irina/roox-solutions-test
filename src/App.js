@@ -9,15 +9,14 @@ import Main from "./components/Main";
 function App() {
 	const [users, setUsers] = useState([]);
 	const [error, setError] = useState(false);
-	const [isLoading, setIsLoading] = useState(true);
-	const [user, setUser] = useState(null);
-	const [sortingMethod, setSortingMethod] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
+	const [sortingMethod, setSortingMethod] = useState('city');
 
 	useEffect(() => {
 		axios
 			.get(BASE_URL)
 			.then((res) => {
-				setIsLoading(false);
+				setIsLoading(true);
 				setError(false);
 				setUsers(res.data);
 			})
@@ -33,29 +32,46 @@ function App() {
 			});
 	}, []);
 
-	// function handleSort() {
-	// 	const sortedData = [...users].sort((a,b) => {
-	// 		return a.item.localeCompare(b.item)
-	// 	})
+	useEffect(() => {
+		const sortArray = (type) => {
+			console.log(type);
+			const types = {
+				city: "address.city",
+				company: "company.name",
+			};
+
+			const sortProperty = types[type];
+			console.log(sortProperty);
+
+			const sortedData = [...users].sort((a, b) => {
+				return a.sortProperty.localeCompare(b.sortProperty);
+			});
+			console.log(sortedData)
+
+			setUsers(sortedData);
+		};
+
+		sortArray(sortingMethod);
+		console.log(sortingMethod);
+	}, [sortingMethod]);
+
+
+
+	// function handleSortByCity() {
+	// 	const sortedData = [...users].sort((a, b) => {
+	// 		return a.address.city.localeCompare(b.address.city);
+	// 	});
 
 	// 	setUsers(sortedData);
 	// }
 
-	function handleSortByCity() {
-		const sortedData = [...users].sort((a, b) => {
-			return a.address.city.localeCompare(b.address.city);
-		});
+	// function handleSortByCompany() {
+	// 	const sortedData = [...users].sort((a, b) => {
+	// 		return a.company.name.localeCompare(b.company.name);
+	// 	});
 
-		setUsers(sortedData);
-	}
-
-	function handleSortByCompany() {
-		const sortedData = [...users].sort((a, b) => {
-			return a.company.name.localeCompare(b.company.name);
-		});
-
-		setUsers(sortedData);
-	}
+	// 	setUsers(sortedData);
+	// }
 
 	return (
 		<div>
@@ -65,9 +81,12 @@ function App() {
 					element={
 						<Main
 							users={users}
-							handleSortByCompany={handleSortByCompany}
-							handleSortByCity={handleSortByCity}
+							// handleSortByCompany={handleSortByCompany}
+							// handleSortByCity={handleSortByCity}
+							setUsers={setUsers}
 							isLoading={isLoading}
+							setSortingMethod={setSortingMethod}
+							sortingMethod={sortingMethod}
 						/>
 					}
 				>

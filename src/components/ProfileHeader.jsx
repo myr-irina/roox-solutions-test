@@ -1,10 +1,16 @@
 import React from "react";
 
-function ProfileHeader() {
+function ProfileHeader({setIsReadOnly}) {
 	return (
 		<header className='header'>
 			<h2 className='header__title'>Профиль пользователя</h2>
-			<button type='button' className='header__button'>Редактировать</button>
+			<button
+				type='button'
+				className='header__button'
+				onClick={() => setIsReadOnly((prevState) => !prevState)}
+			>
+				Редактировать
+			</button>
 		</header>
 	);
 }

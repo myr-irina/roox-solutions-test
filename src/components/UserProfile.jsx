@@ -1,36 +1,48 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import ProfileHeader from "./ProfileHeader";
 
 function UserProfile({ users }) {
-	const [readOnly, setReadOnly] = useState();
+	const [isReadOnly, setIsReadOnly] = useState(true);
+	// const [isReadOnlyInput, setIsReadOnlyInput] = useState(true);
+	const [value, setValue] = useState();
 
 	const { id } = useParams();
 	const user = users.find((item) => item.id === +id);
 
+	function handleInputChange(e) {
+		setValue(e.target.value);
+		console.log(e.target.value);
+	}
+
 	return (
 		<>
-			<ProfileHeader />
+			<ProfileHeader setIsReadOnly={setIsReadOnly} />
 			<section className='user-profile'>
 				<form className='user-profile__form' autoComplete='off'>
 					<ul className='user-profile__list'>
 						<li className='user-profile__item'>
 							<label for='name'>Name</label>
 							<input
+								className={`${isReadOnly ? "input-disabled" : ""}`}
 								type='text'
 								id='name'
 								name='user-profile__name'
-								defaultValue={user.name}
+								value={user.name}
+								readOnly={isReadOnly}
+								onChange={handleInputChange}
 							/>
 						</li>
 
 						<li className='user-profile__item'>
 							<label for='user-name'>User name</label>
 							<input
+								className={`${isReadOnly ? "input-disabled" : ""}`}
 								type='text'
 								id='user-name'
 								name='user-profile__username'
 								defaultValue={user.username}
+								onChange={handleInputChange}
 							/>
 						</li>
 
@@ -105,7 +117,13 @@ function UserProfile({ users }) {
 						</li>
 					</ul>
 				</form>
-				<button type='submit'>Отправить</button>
+
+				<button
+					type='submit'
+					className={`btn ${isReadOnly ? "btn__disabled" : ""}`}
+				>
+					Отправить
+				</button>
 			</section>
 		</>
 	);
