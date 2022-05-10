@@ -5,6 +5,8 @@
 
 
     &__form {
+        display: flex;
+        flex-direction: column;
         padding: 20px 6px 19px 12px;
         border: 1px solid $light-grey-color;
         width: 100%;
@@ -21,6 +23,7 @@
     .input-disabled {
         color: rgba(0, 0, 0, 0.3);
     }
+
 
     &__item {
         display: flex;
@@ -41,7 +44,7 @@
             color: rgba(0, 0, 0, 0.3);
         }
 
-        input:invalid {
+        input-error {
             border: 1px solid #D91313;
         }
 

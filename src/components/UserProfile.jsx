@@ -91,14 +91,27 @@ function UserProfile({ users }) {
 								value={userData.email}
 								readOnly={isReadOnly}
 								onChange={(e) => {
+									const value = e.target.value;
+
 									setUserData((oldUserData) => {
 										return {
 											...oldUserData,
 											email: e.target.value,
 										};
 									});
+
+									if (
+										!/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i.test(
+											value
+										)
+									) {
+										setError("input-error");
+									} else {
+										setError("");
+									}
 								}}
 							/>
+							<p className='error'>{error && error}</p>
 						</li>
 
 						<li className='user-profile__item'>
@@ -220,15 +233,17 @@ function UserProfile({ users }) {
 							<textarea id='msg' name='user_message' />
 						</li>
 					</ul>
-				</form>
 
-				<button
+					<button
 					type='submit'
 					className={`btn ${isReadOnly ? "btn__disabled" : ""}`}
 					onClick={handleSubmit}
 				>
 					Отправить
 				</button>
+				</form>
+
+			
 			</section>
 		</>
 	);
