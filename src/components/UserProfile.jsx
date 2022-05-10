@@ -4,8 +4,6 @@ import ProfileHeader from "./ProfileHeader";
 
 function UserProfile({ users }) {
 	const [isReadOnly, setIsReadOnly] = useState(true);
-	// const [isReadOnlyInput, setIsReadOnlyInput] = useState(true);
-	const [userData, setUserData] = useState({});
 
 	const { id } = useParams();
 	const user = users.find((item) => item.id === +id);
@@ -17,23 +15,29 @@ function UserProfile({ users }) {
 		});
 	}, [user]);
 
-	if (!user) return null;
+	const [userData, setUserData] = useState({
+		name: "",
+		username: "",
+		email: "",
+		street: "",
+		city: "",
+		zipcode: "",
+		phone: "",
+		website: "",
+		comment: "",
+	});
+	const [error, setError] = useState("");
 
-	function handleInputChange(e) {
-		setUserData(e.target.value);
-		console.log(e.target.value);
-	}
+	if (!user) return null;
 
 	function handleSubmit(e) {
 		e.preventDefault();
 
 		//проверить, что все поля формы валидны, кнопка отправки валидна
 		//сформировать JSON и вывести ее в консоль
-		console.log(JSON.stringify(userData))
+		console.log(JSON.stringify(userData));
 		setIsReadOnly(true);
 	}
-
-	//каждый инпут сделать отделным компонентом, у каждого комп. свой value и onChange
 
 	return (
 		<>
@@ -53,75 +57,116 @@ function UserProfile({ users }) {
 								onChange={(e) => {
 									setUserData((oldUserData) => {
 										return {
-											...oldUserData, name: e.target.value
-										}
+											...oldUserData,
+											name: e.target.value,
+										};
 									});
 								}}
 							/>
 						</li>
 
 						<li className='user-profile__item'>
-							<label for='user-name'>User name</label>
+							<label htmlFor='user-name'>User name</label>
 							<input
 								className={`${isReadOnly ? "input-disabled" : ""}`}
 								type='text'
 								id='user-name'
 								name='user-profile__username'
-								defaultValue={user.username}
-								onChange={handleInputChange}
+								value={userData.username}
+								readOnly={isReadOnly}
+								onChange={(e) => {
+									setUserData((oldUserData) => {
+										return {
+											...oldUserData,
+											username: e.target.value,
+										};
+									});
+								}}
 							/>
 						</li>
 
 						<li className='user-profile__item'>
-							<label for='email'>E-mail</label>
+							<label htmlFor='email'>E-mail</label>
 							<input
 								className={`${isReadOnly ? "input-disabled" : ""}`}
 								type='email'
 								id='email'
 								name='user-profile__email'
-								defaultValue={user.email}
-								onChange={handleInputChange}
+								value={userData.email}
+								readOnly={isReadOnly}
+								onChange={(e) => {
+									setUserData((oldUserData) => {
+										return {
+											...oldUserData,
+											email: e.target.value,
+										};
+									});
+								}}
 							/>
 						</li>
 
 						<li className='user-profile__item'>
-							<label for='street'>Street</label>
+							<label htmlFor='street'>Street</label>
 							<input
 								className={`${isReadOnly ? "input-disabled" : ""}`}
 								type='text'
 								id='street'
 								name='user-profile__street'
-								defaultValue={user.address.street}
-								onChange={handleInputChange}
+								value={userData.address.street}
+								readOnly={isReadOnly}
+								onChange={(e) => {
+									setUserData((oldUserData) => {
+										return {
+											...oldUserData,
+											address: {
+											   ...oldUserData.address,
+											   street: e.target.value
+											}
+										};
+									});
+								}}
 							/>
 						</li>
 
 						<li className='user-profile__item'>
-							<label for='city'>City</label>
+							<label htmlFor='city'>City</label>
 							<input
 								className={`${isReadOnly ? "input-disabled" : ""}`}
 								type='text'
 								id='city'
 								name='user-profile__city'
-								defaultValue={user.address.city}
-								onChange={handleInputChange}
+								// value={userData.address.city}
+								// value={userData.address.city}
+								// readOnly={isReadOnly}
+								// onChange={(e) => {
+								// 	setUserData((oldUserData) => {
+								// 		return {
+								// 			...oldUserData,
+								// 			city: {
+								// 				...oldUserData.address,
+								// 				city: e.target.value,
+								// 			},
+								// 		};
+								// 	});
+								// }}
+
+
 							/>
 						</li>
 
 						<li className='user-profile__item'>
-							<label for='zip-code'>Zip code</label>
+							<label htmlFor='zip-code'>Zip code</label>
 							<input
 								className={`${isReadOnly ? "input-disabled" : ""}`}
 								type='number'
 								id='zip-code'
 								name='user-profile__zip-code'
-								defaultValue={user.address.zipcode}
-								onChange={handleInputChange}
+								// value={userData.address.zipcode}
 							/>
 						</li>
 
 						<li className='user-profile__item'>
-							<label for='phone'>Phone</label>
+							<label htmlFor='phone'>Phone</label>
 							<input
 								className={`${isReadOnly ? "input-disabled" : ""}`}
 								type='tel'
@@ -131,26 +176,24 @@ function UserProfile({ users }) {
 								size='11'
 								minLength='11'
 								maxLength='11'
-								defaultValue={user.phone}
-								onChange={handleInputChange}
+								// value={userData.phone}
 							/>
 						</li>
 
 						<li className='user-profile__item'>
-							<label for='url'>Website</label>
+							<label htmlFor='url'>Website</label>
 							<input
 								className={`${isReadOnly ? "input-disabled" : ""}`}
 								type='url'
 								id='url'
 								name='user-profile__url'
 								placeholder='www.example.com'
-								defaultValue={user.website}
-								onChange={handleInputChange}
+								value={userData.website}
 							/>
 						</li>
 
 						<li className='user-profile__item'>
-							<label for='msg'>Comment</label>
+							<label htmlFor='msg'>Comment</label>
 							<textarea id='msg' name='user_message' />
 						</li>
 					</ul>

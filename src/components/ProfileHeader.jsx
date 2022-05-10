@@ -1,6 +1,6 @@
 import React from "react";
 
-function ProfileHeader({ setIsReadOnly, input }) {
+function ProfileHeader({ setIsReadOnly }) {
 	return (
 		<header className='header'>
 			<h2 className='header__title'>Профиль пользователя</h2>
