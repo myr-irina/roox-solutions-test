@@ -9,14 +9,14 @@ import Main from "./components/Main";
 function App() {
 	const [users, setUsers] = useState([]);
 	const [error, setError] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
-	const [sortingMethod, setSortingMethod] = useState('city');
+	const [isLoading, setIsLoading] = useState(true);
+	const [sortingMethod, setSortingMethod] = useState("city");
 
 	useEffect(() => {
 		axios
 			.get(BASE_URL)
 			.then((res) => {
-				setIsLoading(true);
+				setIsLoading(false);
 				setError(false);
 				setUsers(res.data);
 			})
@@ -34,28 +34,22 @@ function App() {
 
 	useEffect(() => {
 		const sortArray = (type) => {
-			console.log(type);
 			const types = {
-				city: "address.city",
-				company: "company.name",
+				city: (user) => user.address.city,
+				company: (user) => user.company.name,
 			};
 
-			const sortProperty = types[type];
-			console.log(sortProperty);
+			const propertyGetter = types[type];
 
 			const sortedData = [...users].sort((a, b) => {
-				return a.sortProperty.localeCompare(b.sortProperty);
+				return propertyGetter(a).localeCompare(propertyGetter(b));
 			});
-			console.log(sortedData)
 
 			setUsers(sortedData);
 		};
 
 		sortArray(sortingMethod);
-		console.log(sortingMethod);
 	}, [sortingMethod]);
-
-
 
 	// function handleSortByCity() {
 	// 	const sortedData = [...users].sort((a, b) => {
@@ -90,7 +84,7 @@ function App() {
 						/>
 					}
 				>
-					<Route index element={<UserInfoList users={users} />} />
+					<Route index element={<UserInfoList users={users} isLoading={isLoading} />} />
 					<Route path=':id' element={<UserProfile users={users} />} />
 				</Route>
 

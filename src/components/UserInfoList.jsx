@@ -7,7 +7,7 @@ function UserInfoList({ users, isLoading }) {
 	return (
 		<>
 			<Header />
-
+			
 			<div className='user-list__wrapper'>
 				{isLoading ? (
 					<Preloader />
