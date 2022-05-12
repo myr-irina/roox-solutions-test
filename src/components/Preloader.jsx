@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function Preloader() {
   return (
-    <div>Идет загрузка...</div>
-  )
+    <section>
+      <div className="loader"></div>
+    </section>
+  );
 }
 
-export default Preloader
+export default Preloader;

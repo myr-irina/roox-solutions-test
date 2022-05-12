@@ -1,27 +1,28 @@
 .user-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-    margin: 17px 0 0;
-    width: 100%;
- 
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin: 17px 0 0;
+  width: 100%;
 
-    p {
-        align-self: flex-end;
-    }
+  p {
+    align-self: flex-end;
+  }
 
-    &__wrapper {
-        display: flex;
-        flex-direction: column;
-        max-width: 420px;          
-    }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 420px;
+    align-items: center;
+    justify-content: center;
+  }
 
-    &__item {
-        list-style: none;
-    }
+  &__item {
+    list-style: none;
+  }
 
-    &__text {
-        margin: 10px 0;
-        align-self:flex-end;
-    }
+  &__text {
+    margin: 10px 0;
+    align-self: flex-end;
+  }
 }

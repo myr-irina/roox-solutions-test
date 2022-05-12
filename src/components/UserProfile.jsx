@@ -7,7 +7,6 @@ function UserProfile({ users }) {
 
   const { id } = useParams();
   const user = users.find((item) => item.id === +id);
-  const required = true;
 
   useEffect(() => {
     if (!user) return;
@@ -20,7 +19,10 @@ function UserProfile({ users }) {
     name: "",
     username: "",
     email: "",
-    address: "",
+    address: {
+      city: "",
+      street: "",
+    },
     zipcode: "",
     phone: "",
     website: "",
@@ -29,15 +31,17 @@ function UserProfile({ users }) {
   const [errorInputEmail, setErrorInputEmail] = useState(false);
   const [errorInputPhone, setErrorInputPhone] = useState(false);
   const [errorInputWebsite, setErrorInputWebsite] = useState(false);
+  const [isRequired, setIsRequired] = useState("");
+  const [error, setError] = useState(false);
   const [formValid, setFormValid] = useState(false);
 
   useEffect(() => {
-    if (errorInputEmail || errorInputPhone) {
+    if (errorInputEmail || errorInputPhone || errorInputWebsite || error) {
       setFormValid(false);
     } else {
       setFormValid(true);
     }
-  }, [errorInputEmail, errorInputPhone]);
+  }, [errorInputEmail, errorInputPhone, errorInputWebsite, error]);
 
   if (!user) return null;
 
@@ -60,9 +64,9 @@ function UserProfile({ users }) {
                 type="text"
                 id="name"
                 name="user-profile__name"
+                placeholder="Иван Иванов"
                 value={userData.name}
                 readOnly={isReadOnly}
-                required={required}
                 onChange={(e) => {
                   setUserData((oldUserData) => {
                     return {
@@ -70,8 +74,16 @@ function UserProfile({ users }) {
                       name: e.target.value,
                     };
                   });
+
+                  const value = e.target.value;
+                  if (!value) {
+                    setError(true)
+                  } else {
+                    setError(false)
+                  }
                 }}
               />
+              {error && <span>Заполните, пожалуйста, поле</span>}
             </li>
 
             <li className="user-profile__item">
@@ -81,6 +93,7 @@ function UserProfile({ users }) {
                 type="text"
                 id="user-name"
                 name="user-profile__username"
+                placeholder="Ivan"
                 value={userData.username}
                 readOnly={isReadOnly}
                 required
@@ -104,6 +117,7 @@ function UserProfile({ users }) {
                 type="email"
                 id="email"
                 name="user-profile__email"
+                placeholder="example@mail.ru"
                 value={userData.email}
                 readOnly={isReadOnly}
                 required
@@ -138,6 +152,7 @@ function UserProfile({ users }) {
                 id="street"
                 name="user-profile__street"
                 value={userData.address.street}
+                placeholder="ул. Пример"
                 readOnly={isReadOnly}
                 required
                 onChange={(e) => {
@@ -161,6 +176,7 @@ function UserProfile({ users }) {
                 type="text"
                 id="city"
                 name="user-profile__city"
+                placeholder="Москва"
                 value={userData.address.city}
                 readOnly={isReadOnly}
                 required
@@ -182,9 +198,9 @@ function UserProfile({ users }) {
               <label htmlFor="zip-code">Zip code</label>
               <input
                 className={`${isReadOnly ? "input-disabled" : ""}`}
-                // type="number"
                 id="zip-code"
                 name="user-profile__zip-code"
+                placeholder="1234234"
                 value={userData.address.zipcode}
                 readOnly={isReadOnly}
                 required
@@ -211,9 +227,9 @@ function UserProfile({ users }) {
                 type="tel"
                 id="phone"
                 name="user-profile__phone"
-                size="11"
-                // minLength="11"
-                // maxLength="11"
+                placeholder="89991112233"
+                minLength="11"
+                maxLength="11"
                 value={userData.phone}
                 readOnly={isReadOnly}
                 required
@@ -226,7 +242,7 @@ function UserProfile({ users }) {
                   });
 
                   const value = e.target.value;
-                  if (value !== "number") {
+                  if (!/([0-9]{11}$)/i.test(value)) {
                     setErrorInputPhone(true);
                   } else {
                     setErrorInputPhone(false);
@@ -238,7 +254,9 @@ function UserProfile({ users }) {
             <li className="user-profile__item">
               <label htmlFor="url">Website</label>
               <input
-                className={`${isReadOnly ? "input-disabled" : ""}`}
+                className={`${isReadOnly ? "input-disabled" : ""} ${
+                  errorInputWebsite ? "input-invalid" : ""
+                }`}
                 type="url"
                 id="url"
                 name="user-profile__url"
@@ -253,6 +271,17 @@ function UserProfile({ users }) {
                       website: e.target.value,
                     };
                   });
+
+                  const value = e.target.value;
+                  if (
+                    !/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/i.test(
+                      value
+                    )
+                  ) {
+                    setErrorInputWebsite(true);
+                  } else {
+                    setErrorInputWebsite(false);
+                  }
                 }}
               />
             </li>
