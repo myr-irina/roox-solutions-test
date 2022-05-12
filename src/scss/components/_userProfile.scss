@@ -1,75 +1,71 @@
 .user-profile {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+
+  &__form {
     display: flex;
     flex-direction: column;
-    margin-top: 16px;
+    padding: 20px 6px 19px 12px;
+    border: 1px solid $light-grey-color;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
 
+  &__list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+  }
 
-    &__form {
-        display: flex;
-        flex-direction: column;
-        padding: 20px 6px 19px 12px;
-        border: 1px solid $light-grey-color;
-        width: 100%;
-        border-radius: 8px;
-        margin-bottom: 10px;
+  .input-disabled {
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+    input {
+      outline: none;
+      max-width: 211px;
+      height: 23px;
+      border: 1px solid $dark-grey-color;
+      border-radius: 5px;
+      padding: 5px 10px;
     }
 
-    &__list {
-        display: flex;
-        flex-direction: column;
-        list-style-type: none;
+    input.placeholder {
+      color: rgba(0, 0, 0, 0.3);
     }
 
-    .input-disabled {
-        color: rgba(0, 0, 0, 0.3);
+    .input-invalid {
+      border: 1px solid #d91313;
     }
 
-
-    &__item {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 10px;
-
-        input {
-            outline: none;
-            max-width: 211px;
-            height: 23px;
-            border: 1px solid $dark-grey-color;
-            border-radius: 5px;
-            padding: 5px 10px;
-        }
-
-
-        input.placeholder {
-            color: rgba(0, 0, 0, 0.3);
-        }
-
-        input-error {
-            border: 1px solid #D91313;
-        }
-
-        label {
-            margin: 0 0 3px 0;
-        }
-
-        textarea {
-            border: 1px solid $dark-grey-color;
-            border-radius: 5px;
-            height: 55px;
-            padding: 5px 10px;
-            outline: none;
-            resize: none;
-        }
+    label {
+      margin: 0 0 3px 0;
     }
 
-    .btn {
-        @include buttonStyle($green-color, 86px);
-        align-self: flex-end;
-
-        &__disabled {
-            @include buttonStyle($dark-grey-color-btn, 86px);
-            align-self: flex-end;
-        }
+    textarea {
+      border: 1px solid $dark-grey-color;
+      border-radius: 5px;
+      height: 55px;
+      padding: 5px 10px;
+      outline: none;
+      resize: none;
     }
+  }
 
+  .btn {
+    @include buttonStyle($green-color, 86px);
+    align-self: flex-end;
+
+    &__disabled {
+      @include buttonStyle($dark-grey-color-btn, 86px);
+      align-self: flex-end;
+    }
+  }
 }
