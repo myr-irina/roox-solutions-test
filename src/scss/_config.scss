@@ -1,8 +1,8 @@
 $font-stack: Roboto;
 
-$font-size-sm: 11px;
-$font-size-md: 12px;
-$font-size-lg: 14px;
+$font-size-sm: 13px;
+$font-size-md: 14px;
+$font-size-lg: 16px;
 
 $light-grey-color: #F3F3F3;
 $dark-grey-color: #BDBDBD;
@@ -11,7 +11,6 @@ $dark-grey-color-label: #A3A3A3;
 
 $blue-color: #4B51EF;
 $green-color: #52CF4F;
-
 
 @mixin buttonStyle($background-color, $width) {
     height: 24px;
