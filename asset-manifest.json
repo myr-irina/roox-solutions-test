@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/user-app-test/static/css/main.2b778eba.css",
-    "main.js": "/user-app-test/static/js/main.0436543c.js",
-    "static/media/Roboto-Regular.ttf": "/user-app-test/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
-    "static/media/Roboto-Bold.ttf": "/user-app-test/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
-    "index.html": "/user-app-test/index.html",
-    "main.2b778eba.css.map": "/user-app-test/static/css/main.2b778eba.css.map",
-    "main.0436543c.js.map": "/user-app-test/static/js/main.0436543c.js.map"
+    "main.css": "/roox-solutions-test/static/css/main.ad302130.css",
+    "main.js": "/roox-solutions-test/static/js/main.0436543c.js",
+    "static/media/Roboto-Regular.ttf": "/roox-solutions-test/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
+    "static/media/Roboto-Bold.ttf": "/roox-solutions-test/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
+    "index.html": "/roox-solutions-test/index.html",
+    "main.ad302130.css.map": "/roox-solutions-test/static/css/main.ad302130.css.map",
+    "main.0436543c.js.map": "/roox-solutions-test/static/js/main.0436543c.js.map"
   },
   "entrypoints": [
-    "static/css/main.2b778eba.css",
+    "static/css/main.ad302130.css",
     "static/js/main.0436543c.js"
   ]
 }
