@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/roox-solutions-test/static/css/main.ad302130.css",
-    "main.js": "/roox-solutions-test/static/js/main.0436543c.js",
+    "main.js": "/roox-solutions-test/static/js/main.3c983165.js",
     "static/media/Roboto-Regular.ttf": "/roox-solutions-test/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
     "static/media/Roboto-Bold.ttf": "/roox-solutions-test/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
     "index.html": "/roox-solutions-test/index.html",
     "main.ad302130.css.map": "/roox-solutions-test/static/css/main.ad302130.css.map",
-    "main.0436543c.js.map": "/roox-solutions-test/static/js/main.0436543c.js.map"
+    "main.3c983165.js.map": "/roox-solutions-test/static/js/main.3c983165.js.map"
   },
   "entrypoints": [
     "static/css/main.ad302130.css",
-    "static/js/main.0436543c.js"
+    "static/js/main.3c983165.js"
   ]
 }
